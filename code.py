@@ -24,11 +24,9 @@ while True:
     # pull up means we have to check for False
     if not button_1.value:
         print("REC pressed")
-        keyboard.press(Keycode.CONTROL, Keycode.ALT, Keycode.R)
-        keyboard.release(Keycode.CONTROL, Keycode.ALT, Keycode.R)
+        keyboard.send(Keycode.CONTROL, Keycode.ALT, Keycode.R)
         time.sleep(1)
     if not button_2.value:
         print("Pause pressed")
-        keyboard.press(Keycode.CONTROL, Keycode.ALT, Keycode.P)
-        keyboard.release(Keycode.CONTROL, Keycode.ALT, Keycode.P)
+        keyboard.send(Keycode.CONTROL, Keycode.ALT, Keycode.P)
         time.sleep(1)
