@@ -8,10 +8,13 @@ from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keycode import Keycode
 
 button_1 = DigitalInOut(board.D0)
+button_2 = DigitalInOut(board.D1)
 
 button_1.direction = Direction.INPUT
+button_2.direction = Direction.INPUT
 
 button_1.pull = Pull.UP
+button_2.pull = Pull.UP
 
 keyboard = Keyboard(usb_hid.devices)
 
@@ -20,5 +23,12 @@ print("waiting for a pin press")
 while True:
     # pull up means we have to check for False
     if not button_1.value:
-        print("button 1 pressed")
-        time.sleep(0.1)
+        print("REC pressed")
+        keyboard.press(Keycode.CONTROL, Keycode.ALT, Keycode.R)
+        keyboard.release(Keycode.CONTROL, Keycode.ALT, Keycode.R)
+        time.sleep(1)
+    if not button_2.value:
+        print("Pause pressed")
+        keyboard.press(Keycode.CONTROL, Keycode.ALT, Keycode.P)
+        keyboard.release(Keycode.CONTROL, Keycode.ALT, Keycode.P)
+        time.sleep(1)
